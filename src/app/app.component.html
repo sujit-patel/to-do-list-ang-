@@ -17,10 +17,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
+            <a
+              class="nav-link"
+              routerLink="/"
+              routerLinkActive="active"
+              style="cursor: pointer"
+              >Home</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a
+              class="nav-link"
+              routerLink="/about"
+              routerLinkActive="active"
+              style="cursor: pointer"
+              >About</a
+            >
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -35,8 +47,9 @@
     class="flex-grow-1 d-flex justify-content-center align-items-center pt-5 mt-5"
   >
     <div class="container text-center">
-      <h1 class="pt-3 mb-3">To-do-List With SujitPatel</h1>
-      <app-todos></app-todos>
+      <!-- <h1 class="pt-3 mb-3">To-do-List With SujitPatel</h1> -->
+      <!-- <app-todos></app-todos> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 

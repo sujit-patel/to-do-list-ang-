@@ -13,18 +13,18 @@ import { NewTodoComponent } from '../new-todo/new-todo.component';
 })
 
 export class TodosComponent {
-localItem: string | null;
+  localItem: string | null;
   todos: Todo[] = [];
 
   constructor() {
-  if (typeof localStorage !== 'undefined') {
-    this.localItem = localStorage.getItem("todos");
-    this.todos = this.localItem ? JSON.parse(this.localItem) : [];
-  } else {
-    this.localItem = null;
-    this.todos = [];
+    if (typeof localStorage !== 'undefined') {
+      this.localItem = localStorage.getItem("todos");
+      this.todos = this.localItem ? JSON.parse(this.localItem) : [];
+    } else {
+      this.localItem = null;
+      this.todos = [];
+    }
   }
-}
 
 
   deleteTodo(todo: Todo) {
@@ -37,6 +37,12 @@ localItem: string | null;
   todoAdd(todo: Todo) {
     console.log(todo);
     this.todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(this.todos));
+  }
+
+  checkBoxTodo(todo: Todo) {
+    const index = this.todos.indexOf(todo);
+    this.todos[index].active = !this.todos[index].active;
     localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 }

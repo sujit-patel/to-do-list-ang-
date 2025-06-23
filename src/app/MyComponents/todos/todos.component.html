@@ -1,15 +1,22 @@
+<h1 class="mb-2">To-do-List With SujitPatel</h1>
 <app-new-todo (addTodo)="todoAdd($event)"></app-new-todo>
 
 <div class="mt-4">
   <!-- <hr /> -->
+
   <div class="d-flex flex-column gap-3 align-items-center">
     <ng-container *ngIf="todos.length > 0; else noTasks">
       <div
-        *ngFor="let todo of todos"
+        *ngFor="let todo of todos; index as i"
         class="card shadow-sm w-100"
         style="width: 32rem"
       >
-        <todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"></todo-item>
+        <todo-item
+          [todo]="todo"
+          [i]="i"
+          (todoDelete)="deleteTodo($event)"
+          (todoCheckBox)="checkBoxTodo($event)"
+        ></todo-item>
       </div>
     </ng-container>
 

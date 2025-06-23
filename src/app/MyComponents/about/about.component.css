@@ -1,0 +1,17 @@
+h1 {
+  font-weight: bold;
+  color: #0d6efd;
+}
+
+.lead {
+  font-size: 1.2rem;
+}
+
+.list-group-item {
+  font-size: 1.05rem;
+}
+
+a.btn {
+  padding: 10px 25px;
+  font-size: 1.1rem;
+}
