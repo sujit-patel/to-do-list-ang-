@@ -2,41 +2,41 @@ import { Component } from '@angular/core';
 import { Todo } from '../../Todo';
 import { CommonModule } from '@angular/common';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
+import { NewTodoComponent } from '../new-todo/new-todo.component';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [CommonModule, TodoItemComponent],
+  imports: [CommonModule, TodoItemComponent, NewTodoComponent],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css'
 })
 
 export class TodosComponent {
-  todos: Todo[] = [
-    {
-      sno: 1,
-      title: "string 1",
-      desc: "Desc 1",
-      active: true
-    },
-    {
-      sno: 2,
-      title: "string 2",
-      desc: "Desc 2",
-      active: false
-    },
-    {
-      sno: 3,
-      title: "string 3",
-      desc: "Desc 3",
-      active: false
-    }
-  ];
+localItem: string | null;
+  todos: Todo[] = [];
+
+  constructor() {
+  if (typeof localStorage !== 'undefined') {
+    this.localItem = localStorage.getItem("todos");
+    this.todos = this.localItem ? JSON.parse(this.localItem) : [];
+  } else {
+    this.localItem = null;
+    this.todos = [];
+  }
+}
 
 
   deleteTodo(todo: Todo) {
     console.log(todo);
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1);
+    localStorage.setItem("todos", JSON.stringify(this.todos));
+  }
+
+  todoAdd(todo: Todo) {
+    console.log(todo);
+    this.todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 }
