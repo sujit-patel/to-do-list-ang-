@@ -1,0 +1,32 @@
+<div class=" mt-4">
+  <!-- <hr /> -->
+  <div class="d-flex flex-column gap-3 align-items-center">
+    <ng-container *ngIf="todos.length > 0; else noTasks">
+      <div
+        *ngFor="let todo of todos"
+        class="card shadow-sm w-100"
+        style="width: 32rem;"
+      >
+        <todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"></todo-item>
+      </div>
+    </ng-container>
+    
+     <ng-template #noTasks>
+      <div
+        class="text-center p-5 border rounded shadow-lg"
+        style="width: 100%;"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png"
+          alt="No Tasks"
+          width="120"
+          class="mb-3"
+        />
+        <h4 class="mb-2">No tasks available</h4>
+        <p class="text-muted">
+          You have no tasks at the moment. Add a new one to get started!
+        </p>
+      </div>
+    </ng-template>
+  </div>
+</div>

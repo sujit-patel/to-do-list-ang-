@@ -1,0 +1,17 @@
+<div class="card-body text-start d-flex flex-wrap justify-content-between">
+  <div>
+    <h3 class="card-title">{{ todo.title }}</h3>
+    <p class="card-text">{{ todo.desc }}</p>
+  </div>
+  <div class="d-flex flex-column align-items-center gap-2">
+    <span
+      class="rounded-circle"
+      [ngClass]="todo.active ? 'bg-success' : 'bg-secondary'"
+      style="width: 14px; height: 14px; display: inline-block"
+    >
+    </span>
+    <button class="btn btn-danger btn-sm" (click)="onClick(todo)">
+      Delete
+    </button>
+  </div>
+</div>

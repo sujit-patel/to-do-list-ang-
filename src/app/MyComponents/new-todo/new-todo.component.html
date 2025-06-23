@@ -1,0 +1,20 @@
+<div class="border py-2 rounded shadow-lg">
+  <h3 class="text-start px-3">Add New Task</h3>
+  <form class="p-3 d-flex flex-wrap gap-2" (ngSubmit)="onSubmit()" action="">
+    <input
+      class="form-control"
+      type="text"
+      name="title"
+      [(ngModel)]="title"
+      placeholder="Enter Title"
+    />
+    <input
+      class="form-control"
+      type="text"
+      name="desc"
+      [(ngModel)]="desc"
+      placeholder="Enter Description"
+    />
+    <button type="submit" class="btn btn-success">Add Task</button>
+  </form>
+</div>
